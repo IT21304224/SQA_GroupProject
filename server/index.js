@@ -1,43 +1,38 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
 const app = express();
 const PORT = 5000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
+// Connect to MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/schoolDB', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+}).then(() => console.log("MongoDB Connected"))
+  .catch(err => console.error(err));
 
-// Models
+// Student Schema
 const Student = mongoose.model('Student', {
   name: String,
-  age: Number,
   email: String,
+  course: String,
+  deliveryMode: String, // Weekday or Weekend
+  lectureMode: String   // Online or Onsite
 });
 
-const Course = mongoose.model('Course', {
-  title: String,
-  code: String,
-  description: String,
+// Routes
+app.get('/students', async (req, res) => {
+  const students = await Student.find();
+  res.json(students);
 });
 
-// Routes - Students
-app.get('/students', async (req, res) => res.json(await Student.find()));
-app.post('/students', async (req, res) => res.json(await Student.create(req.body)));
-app.put('/students/:id', async (req, res) => res.json(await Student.findByIdAndUpdate(req.params.id, req.body, { new: true })));
-app.delete('/students/:id', async (req, res) => res.json(await Student.findByIdAndDelete(req.params.id)));
-
-// Routes - Courses
-app.get('/courses', async (req, res) => res.json(await Course.find()));
-app.post('/courses', async (req, res) => res.json(await Course.create(req.body)));
-app.put('/courses/:id', async (req, res) => res.json(await Course.findByIdAndUpdate(req.params.id, req.body, { new: true })));
-app.delete('/courses/:id', async (req, res) => res.json(await Course.findByIdAndDelete(req.params.id)));
+app.post('/students', async (req, res) => {
+  const student = await Student.create(req.body);
+  res.json(student);
+});
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
