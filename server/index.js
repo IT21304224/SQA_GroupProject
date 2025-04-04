@@ -88,8 +88,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
  *                 $ref: '#/components/schemas/Student'
  */
 app.get('/students', async (req, res) => {
-  const students = await Student.find();
-  res.json(students);
+  try {
+    const students = await Student.find();
+    res.json(students);
+  } catch (err) {
+    res.status(500).send("Error fetching students");
+  }
 });
 
 /**
@@ -109,8 +113,70 @@ app.get('/students', async (req, res) => {
  *         description: Student created successfully
  */
 app.post('/students', async (req, res) => {
-  const student = await Student.create(req.body);
-  res.json(student);
+  try {
+    const student = await Student.create(req.body);
+    res.json(student);
+  } catch (err) {
+    res.status(500).send("Error creating student");
+  }
+});
+
+/**
+ * @swagger
+ * /students/{id}:
+ *   put:
+ *     summary: Update a student by ID
+ *     tags: [Student]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Student ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Student'
+ *     responses:
+ *       200:
+ *         description: Student updated successfully
+ */
+app.put('/students/:id', async (req, res) => {
+  try {
+    const updated = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updated);
+  } catch (err) {
+    res.status(500).send("Error updating student");
+  }
+});
+
+/**
+ * @swagger
+ * /students/{id}:
+ *   delete:
+ *     summary: Delete a student by ID
+ *     tags: [Student]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Student ID
+ *     responses:
+ *       204:
+ *         description: Student deleted successfully
+ */
+app.delete('/students/:id', async (req, res) => {
+  try {
+    await Student.findByIdAndDelete(req.params.id);
+    res.sendStatus(204);
+  } catch (err) {
+    res.status(500).send("Error deleting student");
+  }
 });
 
 // Start Server
