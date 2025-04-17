@@ -69,7 +69,7 @@ function Home() {
             <select
               className="form-select"
               value={form.lectureMode}
-              onChange={e => setForm({ ...form, lectureMode: e.target.value })}
+              onChange={e => setForm({ ...form, lectureMode: e.target.value })} //check
             >
               <option value="Online">Online</option>
               <option value="Onsite">Onsite</option>
