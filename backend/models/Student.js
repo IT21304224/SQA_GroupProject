@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
+  // Add profile picture
+  profilePicture: String, // Store file path/URL
   // Basic Info
   fullName: String,
   username: String,
