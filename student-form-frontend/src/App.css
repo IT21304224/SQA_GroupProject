@@ -1,0 +1,28 @@
+/* src/App.css */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #f4f7f6;
+}
+
+.navbar {
+  background-color: #333;
+  padding: 1rem 2rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 1.1rem;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 1rem; /* Add some padding around the main content */
+}
+
+/* Add other global styles if needed */

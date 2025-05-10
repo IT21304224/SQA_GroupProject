@@ -1,0 +1,189 @@
+/* src/pages/StudentProfile.css */
+
+.profile-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff; /* White background for profile */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* --- View Mode Styles --- */
+  .profile-details {
+    line-height: 1.8;
+  }
+  
+  .detail-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #eee; /* Dashed separator */
+  }
+  
+  .detail-section:last-child {
+      border-bottom: none;
+  }
+  
+  
+  .detail-section h3 {
+    color: #0056b3; /* A slightly different color for headings */
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+  }
+  
+  .profile-details p {
+    margin: 0.4rem 0;
+    color: #555;
+  }
+  
+  .profile-details strong {
+    color: #333;
+    margin-right: 0.5rem;
+    min-width: 150px; /* Align values somewhat */
+    display: inline-block;
+  }
+  
+  /* --- Edit Mode Styles (Reuse from StudentForm.css) --- */
+  /* Import or copy relevant styles */
+  .profile-container form fieldset {
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+  }
+  
+  .profile-container form legend {
+    padding: 0 0.5rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .profile-container .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem 1.5rem;
+  }
+  
+  .profile-container .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-container .form-group-full {
+    grid-column: 1 / -1;
+  }
+  
+  .profile-container form label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #444;
+  }
+  
+  .profile-container form input[type="text"],
+  .profile-container form input[type="email"],
+  .profile-container form input[type="tel"],
+  .profile-container form input[type="date"],
+  .profile-container form input[type="number"],
+  .profile-container form select,
+  .profile-container form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .profile-container form textarea {
+      min-height: 80px;
+      resize: vertical;
+  }
+  
+  .profile-container form input:focus,
+  .profile-container form select:focus,
+  .profile-container form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  /* --- Action Buttons --- */
+  .profile-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem; /* Space between buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+  
+  /* General Button Styles (can be moved to App.css or index.css) */
+  .button-primary,
+  .button-secondary {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none; /* For Link components */
+    text-align: center;
+    display: inline-block; /* For Link alignment */
+  }
+  
+  .button-primary {
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s ease;
+  }
+  .button-primary:hover {
+    background-color: #0056b3;
+  }
+  .button-primary:disabled {
+     background-color: #ccc;
+     cursor: not-allowed;
+  }
+  
+  
+  .button-secondary {
+    background-color: #6c757d;
+    color: white;
+    transition: background-color 0.2s ease;
+  }
+  .button-secondary:hover {
+    background-color: #5a6268;
+  }
+  .button-secondary:disabled {
+     background-color: #ccc;
+     cursor: not-allowed;
+  }
+  
+  
+  /* --- Feedback Messages (Reuse from StudentForm.css) --- */
+  .profile-container .error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem; /* Added margin bottom */
+    border-radius: 4px;
+  }
+  
+  .profile-container .success-message {
+     color: #155724;
+     background-color: #d4edda;
+     border: 1px solid #c3e6cb;
+     padding: 0.75rem 1.25rem;
+     margin-top: 1rem; /* Added margin top */
+     margin-bottom: 1rem; /* Added margin bottom */
+     border-radius: 4px;
+  }
